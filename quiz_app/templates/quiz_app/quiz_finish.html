@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Finish</title>
+</head>
+<body>
+    <h1>Quiz Finish</h1>
+    <p>Результати тесту</p>
+    <h3>Ви відповіли правильно на {{ number_of_true_answers }} з {{ number_of_questions }} питань</h3>
+    <h2>Ваш рейтинг {{ user_rate }}</h2>
+    <a href="{% url "quiz_app:index" %}">На Головну</a>
+</body>
+</html>

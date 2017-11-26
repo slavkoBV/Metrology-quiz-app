@@ -1,0 +1,23 @@
+{% extends "quiz_app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    <form class="form-horizontal" action="{% url 'quiz_app:quiz_start' %}" method="post">
+                {% csrf_token %}
+        <div>{{current_question.description}}</div>
+
+                <ul>
+                    {% for answer in answers %}
+                        <li>
+                            <input hidden name="current_question_id" value="{{ current_question.id }}">
+                            <input class="form-group" type="radio" name="user_answer" value={{answer.id}}>
+                            {{answer.description}}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <input class="btn btn-primary" type="submit" value="Наступне питання">
+            </form>
+    </div>
+{% endblock content %}
