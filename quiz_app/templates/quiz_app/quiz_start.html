@@ -3,21 +3,38 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-    <form class="form-horizontal" action="{% url 'quiz_app:quiz_start' %}" method="post">
-                {% csrf_token %}
-        <div>{{current_question.description}}</div>
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Тестування</h2>
+            <p>Дайте відповіді на питання</p>
+        </div>
+    </div>
 
-                <ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="{% url 'quiz_app:quiz_start' %}" method="post">
+                        {% csrf_token %}
+                    <h3>{{current_question.description}}</h3>
+                    <input hidden name="current_question_id" value="{{ current_question.id }}">
+                    <ul>
                     {% for answer in answers %}
-                        <li>
-                            <input hidden name="current_question_id" value="{{ current_question.id }}">
-                            <input class="form-group" type="radio" name="user_answer" value={{answer.id}}>
-                            {{answer.description}}
+                        <li class="question">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="user_answer" value={{answer.id}}>
+                                    <div>{{answer.description}}</div>
+                                </label>
+
+
+
+                            </div>
                         </li>
                     {% endfor %}
-                </ul>
-                <input class="btn btn-primary" type="submit" value="Наступне питання">
-            </form>
+                    </ul>
+                    <input class="btn btn-primary" type="submit" value="Наступне питання">
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock content %}

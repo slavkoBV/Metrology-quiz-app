@@ -1,0 +1,43 @@
+html {
+    position: relative;
+	min-height: 100%;
+}
+
+body {
+    margin-bottom: 120px;
+    font-size: 16px;
+
+}
+
+
+.title {
+    text-align: center;
+}
+
+h2.title {
+    font-size: 2.4em;
+    font-weight: 600;
+}
+
+p.title {
+    font-size: 1.0em;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+}
+
+.footer {
+    border-top: 1px solid #808080;
+    padding-top: 20px;
+    background: #444444;
+    color: #dddddd;
+    height: 100%;
+}
+
+li.question {
+    list-style: none;
+}

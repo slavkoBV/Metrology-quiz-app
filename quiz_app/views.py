@@ -29,7 +29,7 @@ def quiz_init(request):
 def quiz_start(request):
     question_number = request.session.get('question_number', 0)
     if request.method == 'POST':
-        user_answer = request.POST.get('user_answer')
+        user_answer = request.POST.get('user_answer', 0)
         current_question_id = request.POST.get('current_question_id')
         true_answer = Answer.objects.filter(question_id=current_question_id).get(true_answer=True)
         if int(user_answer) == int(str(true_answer)):
@@ -50,7 +50,7 @@ def quiz_start(request):
 def quiz_finish(request):
     number_of_true_answers = int(request.session.get('number_true_answers'))
     number_of_questions = int(request.session.get('number_of_questions'))
-    user_rate = round((number_of_true_answers/number_of_questions) * 100, 1)
+    user_rate = round((number_of_true_answers/number_of_questions) * 100)
     context = {
         'user_rate': user_rate,
         'number_of_true_answers': number_of_true_answers,
